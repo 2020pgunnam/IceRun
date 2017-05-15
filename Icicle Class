@@ -1,0 +1,72 @@
+   
+
+
+   import java.awt.*;
+   import java.util.*;
+   
+   public class Icicle
+   {
+      private int[] myXPoints;   // x and y coordinates of center
+      private int[] myYPoints;
+      private final int nPoint = 3;
+      private Color myColor; 
+      // constructors
+      public Icicle()     //default constructor
+      {
+         int[] myXPoints = {200,250,225};
+         int[] myYPoints = {0, 0, 50};
+         myColor = Color.WHITE;
+         
+      }
+      public Icicle(int[] xPoints, int[] yPoints, Color c)
+      {
+         int[] myXPoints = Arrays.copyOf(xPoints, xPoints.length);
+         int[] myYPoints = Arrays.copyOf(yPoints, yPoints.length);
+         myColor = c;
+         
+      }
+    // accessor methods
+      public int getX() 
+      { 
+         return myXPoints[3]
+      }
+      public int getY()      
+      { 
+         return myYPoints[3]
+      }
+      public int getHeight() 
+      { 
+         return myYPoints[3] - myYPoints[2];
+      }
+      public int getBase() 
+      { 
+         return myXPoints[2] - myXPoints[1];
+      }
+
+      public Color getColor() 
+      { 
+         return myColor;
+      }
+         // modifier methods
+      public void setX(int[] xPoints)
+      {
+         int[] myXPoints = Arrays.copyOf(xPoints, xPoints.length);
+      } 
+      public void setY(int[] yPoints)
+      {
+         int[] myYPoints = Arrays.copyOf(yPoints, yPoints.length);
+      } 
+      public void setColor(Color c)
+      {
+         myColor = c;
+      }
+         //	 instance methods
+     
+      public void draw(Graphics myBuffer) 
+      {
+         myBuffer.setColor(myColor);
+         myBuffer.fillPolygon(myXPoints, myYPoints, nPoint);
+        
+      }
+      
+   }
