@@ -1,0 +1,53 @@
+   import java.awt.*;
+   //game frame will be 1000x700
+   public class PowerUp
+   {
+      private double myX;   // x and y coordinates of center
+      private double myY;
+      private double myDiameter;
+     // constructors
+      public Power(double x, double y)
+      {
+         myX = x;
+         myY = y;
+         myDiameter = 25;
+      }
+    // accessor methods
+      public double getX() 
+      { 
+         return myX;
+      }
+      public double getY()      
+      { 
+         return myY;
+      }
+      public double getDiameter() 
+      { 
+         return myDiameter;
+      }
+      public double getRadius()
+      {
+      return myDiameter / 2;
+      }
+   // modifier methods
+      public void setX(double x)
+      {
+         myX = x;
+      } 
+      public void setY(double y)
+      {
+         myY = y;
+      }
+    //	 instance methods
+      public void randPos(int rightEdge, int bottomEdge)
+      {
+         // moves powerup to random location that player can reach
+         myX = (Math.random()* (rightEdge-myDiameter) + myRadius);
+         myY = (Math.random()* (bottomEdge-myDiameter) + ((bottomEdge/2) - myRadius));
+      }
+      public abstract void draw(Graphics myBuffer) 
+      {
+         
+        
+      }
+   }
