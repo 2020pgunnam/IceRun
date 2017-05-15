@@ -1,1 +1,22 @@
+   import java.awt.*;
+   //game frame will be 1000x700
+   public PowerUp SpeedPlayer
+   {
+      private double myX;   // x and y coordinates of center
+      private double myY;
+      private double myDiameter;
+     // constructors
+      public Power(double x, double y)
+      {
+         super(x,y);
+      }
+    
+    //	 instance methods
+      
+      public abstract void draw(Graphics myBuffer) 
+      {
+         //loads SpeedPlayer ImageIcon
+        
+      }
+   }
 
