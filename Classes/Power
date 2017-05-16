@@ -12,7 +12,65 @@
          myY = y;
          myDiameter = 25;
       }
+    // accessor methods   import java.awt.*;
+   //game frame will be 800x800
+   public class Power
+   {
+      private double myX;   // x and y coordinates of center
+      private double myY;
+      private double myDiameter;
+      private double myRadius;
+     // constructors
+      public Power(double x, double y)
+      {
+         myX = x;
+         myY = y;
+         myDiameter = 25;
+         myRadius = myDiameter/2;
+      }
+      public Power(double x, double y, double d)
+      {
+         myX = x;
+         myY = y;
+         myDiameter = d;
+         myRadius = d/2;
+      }
     // accessor methods
+      public double getX() 
+      { 
+         return myX;
+      }
+      public double getY()      
+      { 
+         return myY;
+      }
+      public double getDiameter() 
+      { 
+         return myDiameter;
+      }
+      public double getRadius()
+      {
+      return myDiameter / 2;
+      }
+   // modifier methods
+      public void setX(double x)
+      {
+         myX = x;
+      } 
+      public void setY(double y)
+      {
+         myY = y;
+      }
+    //	 instance methods
+      public void randPos(int rightEdge, int bottomEdge)
+      {
+         // moves powerup to random location that player can reach
+         myX = (Math.random()* (rightEdge-myDiameter) + myRadius);
+         myY = (Math.random()* (bottomEdge-myDiameter) + ((bottomEdge/2) - myRadius));
+      }
+      
+         }
+
       public double getX() 
       { 
          return myX;
