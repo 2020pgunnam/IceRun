@@ -28,19 +28,19 @@
     // accessor methods
       public int getX() 
       { 
-         return myXPoints[3]
+         return (myXPoints[0] + myXPoints[1]) /2;
       }
       public int getY()      
       { 
-         return myYPoints[3]
+         return myYPoints[0];
       }
       public int getHeight() 
       { 
-         return myYPoints[3] - myYPoints[2];
+         return myYPoints[1] - myYPoints[2];
       }
       public int getBase() 
       { 
-         return myXPoints[2] - myXPoints[1];
+         return myXPoints[1] - myXPoints[0];
       }
 
       public Color getColor() 
