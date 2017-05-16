@@ -1,21 +1,28 @@
    import java.awt.*;
    //game frame will be 1000x700
-   public PowerUp SpeedPlayer
+   public class SpeedPlayer extends Power
    {
       private double myX;   // x and y coordinates of center
       private double myY;
-      private double myDiameter;
+      private Color myColor;
      // constructors
-      public Power(double x, double y)
+      public SpeedPlayer(double x, double y, Color c)
       {
          super(x,y);
+         myColor = c;
+      }
+      public SpeedPlayer(double x, double y, double d, Color c)
+      {
+         super(x,y,d);
+         myColor = c;
       }
     
     //	 instance methods
       
-      public abstract void draw(Graphics myBuffer) 
+      public void draw(Graphics myBuffer) 
       {
-         //loads SpeedPlayer ImageIcon
+        myBuffer.setColor(myColor);
+         myBuffer.fillOval((int)(getX() - getRadius()), (int)(getY()-getRadius()), (int)getDiameter(), (int)getDiameter());
         
       }
    }
