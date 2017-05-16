@@ -1,12 +1,26 @@
    import java.awt.*;
-   //game frame will be 800x800
+ 	/*****************************************************************
+	* A Power is the main class for all PowerUps. It maintains its x and y position on the  
+   * grid. It also knows its diameter and radius. Furthermore, a Power can return its 
+	* x value, y value, diameter, and radius. The Power can also set these values to a  
+   * specified value. The Power has a void method which can set a random position.  
+	
+   * @author Prateek Gunnam and Tony Liang
+	* @version 1
+	****************************************************************/
    public class Power
    {
-      private int myX;   // x and y coordinates of center
+      private int myX;   
       private int myY;
       private int myDiameter;
       private int myRadius;
-     // constructors
+     /************************************************************* 
+   	* Constructs a Power with initial xPosition specified by x and its
+      * initial yPosition specified by y. Sets pre-determined diameter.
+   	* @param x    initial length
+      * @param y    initial height
+   	**************************************************************/
+
       public Power(int x, int y)
       {
          myX = x;
@@ -14,6 +28,14 @@
          myDiameter = 25;
          myRadius = myDiameter/2;
       }
+       /************************************************************* 
+   	* Constructs a Power with initial xPosition specified by x and its
+      * initial yPosition specified by y. 
+   	* @param x    initial length
+      * @param y    initial height
+      * @param d    inital diameter
+   	**************************************************************/
+
       public Power(int x, int y, int d)
       {
          myX = x;
@@ -21,36 +43,74 @@
          myDiameter = d;
          myRadius = d/2;
       }
-    // accessor methods
+      /*************************************************************** 
+   	* Returns the Power's xPosition
+   	* @return   xPosition
+   	**************************************************************/
       public int getX() 
       { 
          return myX;
       }
+       /*************************************************************** 
+   	* Returns the Power's yPosition
+   	* @return   yPosition
+   	**************************************************************/
       public int getY()      
       { 
          return myY;
       }
+      /*************************************************************** 
+   	* Returns the Power's diameter
+   	* @return diameter
+   	**************************************************************/
+
       public int getDiameter() 
       { 
          return myDiameter;
       }
+       /*************************************************************** 
+   	* Returns the Power's radius
+   	* @return radius
+   	**************************************************************/
+
       public int getRadius()
       {
       return myDiameter / 2;
       }
-   // modifier methods
+      
+      /***************************************************************
+   	* Sets the xPosition to the specified input number.
+   	* @param x	 assigns x to xPosition
+   	**************************************************************/
+
       public void setX(int x)
       {
          myX = x;
       } 
+      /***************************************************************
+   	* Sets the yPosition to the specified input number.
+   	* @param y	 assigns y to yPosition
+   	**************************************************************/
       public void setY(int y)
       {
          myY = y;
       }
-    //	 instance methods
+       /***************************************************************
+   	* Sets the diameter to the specified input number.
+   	* @param d	 assigns d to diameter
+   	**************************************************************/
+      public void setDiameter(int d)
+      {
+      myDiameter = d;
+      }
+      /**************************************************************************************
+   	* Sets the xPosition and yPosition of the rectangle to a random number within the frame.
+   	* @param rightEdge	 assigns rightEdge to xPosition limit
+      * @param bottomEdge   assigns bottomEdge to yPosition limit
+   	***************************************************************************************/
+
       public void randPos(int rightEdge, int bottomEdge)
       {
-         // moves powerup to random location that player can reach
          myX = (int)(Math.random()* (rightEdge-myDiameter) + myRadius);
          myY = (int)(Math.random()* (bottomEdge-myDiameter) + ((bottomEdge/2) - myRadius));
       }
