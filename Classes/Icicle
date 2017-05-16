@@ -10,18 +10,19 @@
       private int[] myYPoints;
       private final int nPoint = 3;
       private Color myColor; 
+     
       // constructors
       public Icicle()     //default constructor
       {
-         int[] myXPoints = {200,250,225};
-         int[] myYPoints = {0, 0, 50};
+         myXPoints = new int[]{200,250,225};
+         myYPoints = new int[]{0, 0, 50};
          myColor = Color.WHITE;
          
       }
       public Icicle(int[] xPoints, int[] yPoints, Color c)
-      {
-         int[] myXPoints = Arrays.copyOf(xPoints, xPoints.length);
-         int[] myYPoints = Arrays.copyOf(yPoints, yPoints.length);
+      {  
+         myXPoints = new int[]{xPoints[0],xPoints[1],xPoints[2]};
+         myYPoints = new int[]{yPoints[0],yPoints[1],yPoints[2]};
          myColor = c;
          
       }
@@ -50,11 +51,13 @@
          // modifier methods
       public void setX(int[] xPoints)
       {
-         int[] myXPoints = Arrays.copyOf(xPoints, xPoints.length);
+          myXPoints = new int[]{xPoints[0],xPoints[1],xPoints[2]};
+         
       } 
       public void setY(int[] yPoints)
       {
-         int[] myYPoints = Arrays.copyOf(yPoints, yPoints.length);
+         myYPoints = new int[]{yPoints[0],yPoints[1],yPoints[2]};
+
       } 
       public void setColor(Color c)
       {
