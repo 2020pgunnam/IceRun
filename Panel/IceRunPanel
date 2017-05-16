@@ -1,0 +1,108 @@
+   //Name:    Date:
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.image.*;
+public class IceRunPanel extends JPanel
+{
+   private static final int FRAME = 800;
+   private static final Color BACKGROUND = Color.WHITE;
+   
+
+   private BufferedImage myImage;
+   private Graphics myBuffer;
+   private Pow;
+   private Icicle icicle
+   private Timer t; 
+
+		//constructor   
+   public PrizePanel()
+   {
+      myImage =  new BufferedImage(FRAME, FRAME, BufferedImage.TYPE_INT_RGB);
+      myBuffer = myImage.getGraphics();
+      myBuffer.setColor(BACKGROUND);
+      myBuffer.fillRect(0, 0, FRAME,FRAME);
+      int xPos = (int)(Math.random()*(FRAME-100) + 50);
+      int yPos = (int)(Math.random()*(FRAME-100)+ 50);
+      /*
+      Instantiate class objects
+      */
+ 
+      addKeyListener(new Key());
+      setFocusable(true);
+      t = new Timer(5, new Listener());
+      t.start();
+   
+         
+   }
+   private class Key extends KeyAdapter
+   
+   {
+   
+      public void keyPressed(KeyEvent e)
+      {
+      
+         if(e.getKeyCode() == KeyEvent.VK_W)
+         {
+           
+         }
+      
+         if(e.getKeyCode() == KeyEvent.VK_S)
+         {
+            bumper.setY(bumper.getY()+10);
+         }
+      
+         if(e.getKeyCode() == KeyEvent.VK_UP)
+         {
+            bumper2.setY(bumper2.getY()-10);
+         }
+      
+         if(e.getKeyCode() == KeyEvent.VK_DOWN)
+         {
+            bumper2.setY(bumper2.getY()+10);
+         }
+      
+        /*
+        Prevent player from leaving frame
+        */
+      }
+   
+   }
+  
+   public void paintComponent(Graphics g)
+   {
+      g.drawImage(myImage, 0, 0, getWidth(), getHeight(), null);
+      
+      for(int i = 1; i<=438; i+=42)
+      {
+         g.setColor(Color.WHITE);
+         g.fillRect(200, i, 7, 35);
+      }
+   
+   }
+   private class Listener implements ActionListener
+   {
+      public void actionPerformed(ActionEvent e)
+      {
+        /*
+        make Icicles fall
+        Randomly make PowerUps and Icicles
+        
+        */
+        
+        
+        
+        
+        
+        
+        
+        //repaint
+        
+        
+           
+      }
+   }   
+   }
+   
+      
+  
