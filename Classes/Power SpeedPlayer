@@ -1,24 +1,55 @@
    import java.awt.*;
    import javax.swing.*;
-   //game frame will be 1000x700
+  /*****************************************************************
+	* A SpeedPlayer a subclass of Power.The one difference from Power is that
+   * SpeedPlayer can draw itself. 
+	
+   * @author Tony lLang and Prateek Gunnam
+	* @version 1
+	****************************************************************/
    public class SpeedPlayer extends Power
    {
       private int myX;   // x and y coordinates of center
       private int myY;
+      private int myDiameter;
       private Color myColor;
-     // constructors
+      /************************************************************* 
+   	* Constructs a SpeedPlayer with initial xPosition specified by x and its
+      * initial yPosition specified by y. Sets pre-determined diameter.
+   	* @param x    initial xPosition
+      * @param y    initial yPosition
+      * @param c    initial color
+   	**************************************************************/
+
+
       public SpeedPlayer(int x, int y, Color c)
       {
          super(x,y);
+         myDiameter = 25;
          myColor = c;
       }
+      
+      /************************************************************* 
+   	* Constructs a SpeedPlayer with initial xPosition specified by x and its
+      * initial yPosition specified by y and its inital diameter specified by d.
+   	* @param x    initial xPosition
+      * @param y    initial yPosition
+      * @param d    initial diameter
+      * @param c    initial color
+   	**************************************************************/
+
       public SpeedPlayer(int x, int y, int d, Color c)
       {
          super(x,y,d);
          myColor = c;
       }
     
-    //	 instance methods
+      /**************************************************************************************
+   	* Draw a circle with specified dimensions and a image in the middle.
+   	* @param myBuffer	   assigns myBuffer to be drawn on
+      * @param icon        assigns icon as image object
+   	***************************************************************************************/
+
       
       public void draw(Graphics myBuffer, ImageIcon icon) 
       {
