@@ -1,6 +1,6 @@
    import java.awt.*;
-   //game frame will be 1000x700
-   public class PowerUp
+   //game frame will be 800x800
+   public class Power
    {
       private double myX;   // x and y coordinates of center
       private double myY;
