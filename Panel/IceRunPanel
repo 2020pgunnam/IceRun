@@ -11,11 +11,11 @@ public class IceRunPanel extends JPanel
 
    private BufferedImage myImage;
    private Graphics myBuffer;
-   private Power power;
+   private SpeedPlayer power;
    private Icicle icicle;
    private Timer t; 
 
-		//constructor   
+		  
    public IceRunPanel()
    {
       myImage =  new BufferedImage(FRAME, FRAME, BufferedImage.TYPE_INT_RGB);
@@ -24,10 +24,13 @@ public class IceRunPanel extends JPanel
       myBuffer.fillRect(0, 0, FRAME,FRAME);
       int xPos = (int)(Math.random()*(FRAME-100) + 50);
       int yPos = (int)(Math.random()*(FRAME-100)+ 50);
-      /*
-      Instantiate class objects
-      */
- 
+      /******************************/
+      /* Instantiate class objects  */
+      /******************************/
+      int[] array = {200,250,225};
+      int[] array2 = {30,30,150};
+     icicle = new Icicle(array, array2, Color.RED);
+      
       addKeyListener(new Key());
       setFocusable(true);
       t = new Timer(5, new Listener());
@@ -72,25 +75,40 @@ public class IceRunPanel extends JPanel
    public void paintComponent(Graphics g)
    {
       g.drawImage(myImage, 0, 0, getWidth(), getHeight(), null);
+     
+      /*********************************/
+      /*                               */
+      /*  Your code goes here.         */
+      /*                               */
+      /*********************************/
+
       
-      for(int i = 1; i<=438; i+=42)
-      {
-         g.setColor(Color.WHITE);
-         g.fillRect(200, i, 7, 35);
-      }
-   
    }
    private class Listener implements ActionListener
    {
       public void actionPerformed(ActionEvent e)
       {
+        icicle.draw(myBuffer);
+        
         /*********************************/
         /*                               */
         /*  Your code goes here.         */
         /*                               */
         /*********************************/
-           
+        
       }
+   }
+   private void drop(Icicle icicle)
+   {
+        /*********************************/
+        /*                               */
+        /*  Your code goes here.         */
+        /*                               */
+        /*********************************/
+        
+
+   
+   
    }   
    }
    
