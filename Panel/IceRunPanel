@@ -11,12 +11,12 @@ public class IceRunPanel extends JPanel
 
    private BufferedImage myImage;
    private Graphics myBuffer;
-   private Pow;
-   private Icicle icicle
+   private Power power;
+   private Icicle icicle;
    private Timer t; 
 
 		//constructor   
-   public PrizePanel()
+   public IceRunPanel()
    {
       myImage =  new BufferedImage(FRAME, FRAME, BufferedImage.TYPE_INT_RGB);
       myBuffer = myImage.getGraphics();
@@ -49,22 +49,22 @@ public class IceRunPanel extends JPanel
       
          if(e.getKeyCode() == KeyEvent.VK_S)
          {
-            bumper.setY(bumper.getY()+10);
+                     
          }
       
          if(e.getKeyCode() == KeyEvent.VK_UP)
          {
-            bumper2.setY(bumper2.getY()-10);
+           
          }
       
          if(e.getKeyCode() == KeyEvent.VK_DOWN)
          {
-            bumper2.setY(bumper2.getY()+10);
+            
          }
       
-        /*
-        Prevent player from leaving frame
-        */
+        /************************************/
+        /*Prevent player from leaving frame.*/
+        /************************************/
       }
    
    }
@@ -84,21 +84,11 @@ public class IceRunPanel extends JPanel
    {
       public void actionPerformed(ActionEvent e)
       {
-        /*
-        make Icicles fall
-        Randomly make PowerUps and Icicles
-        
-        */
-        
-        
-        
-        
-        
-        
-        
-        //repaint
-        
-        
+        /*********************************/
+        /*                               */
+        /*  Your code goes here.         */
+        /*                               */
+        /*********************************/
            
       }
    }   
