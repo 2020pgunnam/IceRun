@@ -1,17 +1,18 @@
    import java.awt.*;
+   import javax.swing.*;
    //game frame will be 1000x700
    public class SpeedPlayer extends Power
    {
-      private double myX;   // x and y coordinates of center
-      private double myY;
+      private int myX;   // x and y coordinates of center
+      private int myY;
       private Color myColor;
      // constructors
-      public SpeedPlayer(double x, double y, Color c)
+      public SpeedPlayer(int x, int y, Color c)
       {
          super(x,y);
          myColor = c;
       }
-      public SpeedPlayer(double x, double y, double d, Color c)
+      public SpeedPlayer(int x, int y, int d, Color c)
       {
          super(x,y,d);
          myColor = c;
@@ -24,7 +25,7 @@
         
         myBuffer.setColor(myColor);
          myBuffer.fillOval((int)(getX() - getRadius()), (int)(getY()-getRadius()), (int)getDiameter(), (int)getDiameter());
-         myBuffer.drawImage(icon.getImage(), 125, 100, null); 
+         myBuffer.drawImage(icon.getImage(), getX()- getRadius(), getY() - getRadius(), null); 
 
       }
    }
