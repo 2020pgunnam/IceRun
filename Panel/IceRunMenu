@@ -1,0 +1,67 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+public class IceRunMenu extends JPanel
+{
+   private JLabel label;
+	protected JFrame frame;
+	private JPanel p;
+   public IceRunMenu(JFrame f)
+   {
+		frame = f;
+      setLayout(new FlowLayout());
+   
+      
+      
+   
+      JButton difficulty = new JButton("Difficulty");
+      difficulty.addActionListener (new DifficultyListener());
+      add(difficulty);
+		
+		JButton game = new JButton("Run Game");
+		game.addActionListener(new GameListener());
+		add(game);
+		
+		JButton quit = new JButton("Quit");
+		quit.addActionListener(new QuitListener());
+		add(quit);
+      
+      
+      
+   
+      
+   }
+   private class DifficultyListener implements ActionListener
+   {
+      public void actionPerformed(ActionEvent e)
+      {
+         
+      }
+      }
+      
+      private class GameListener implements ActionListener
+   {
+      public void actionPerformed(ActionEvent e)
+      {
+			 	JDialog dialog = new JDialog(frame, "Ice Run", true);
+				dialog.setContentPane(new IceRunPanel());
+				dialog.pack();
+            dialog.setSize(800,800);
+            dialog.setLocation(500,200);
+				dialog.setVisible(true);
+            
+
+      }
+   }
+      
+      private class QuitListener implements ActionListener
+   {
+      public void actionPerformed(ActionEvent e)
+      {
+         System.exit(0);
+      }
+      }
+      
+      }
+   
