@@ -3,21 +3,41 @@
 
    import java.awt.*;
    import java.util.*;
-   
+   /*****************************************************************
+	* Icicle is a class that maintains information about its xPoints and yPoints. 
+   * An Icicle knows how to return its the get the x and y value of its tip, its height,
+	* and its base length.
+   * The Rectangle can also set its length as well as height.  
+	
+   * @author Tony Liang and Prateek Gunnam
+	* @version 1
+	****************************************************************/
    public class Icicle
    {
-      private int[] myXPoints;   // x and y coordinates of center
+      private int[] myXPoints;  
       private int[] myYPoints;
       private final int nPoint = 3;
       private Color myColor; 
      
-      // constructors
-      public Icicle()     //default constructor
+     /************************************************************* 
+   	* Default constructor with predetermined xPoints, yPoints, 
+      * initial yPosition specified by y. Sets pre-determined diameter.
+   	**************************************************************/
+
+      public Icicle()     
       {
          myXPoints = new int[]{200,250,225};
          myYPoints = new int[]{0, 0, 50};
          myColor = Color.WHITE;
-         
+      
+      /************************************************************* 
+   	* Constructs an Icicle with initial xPosition specified by xPoints and its
+      * initial yPosition specified by yPoints and initial Color specified by c
+   	* @param xPoints    initial xPosition
+      * @param yPoints    initial yPosition
+      * @param c          initial color
+   	**************************************************************/
+ 
       }
       public Icicle(int[] xPoints, int[] yPoints, Color c)
       {  
