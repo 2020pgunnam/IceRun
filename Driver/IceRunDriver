@@ -1,0 +1,19 @@
+
+
+   import javax.swing.*;
+   
+    public class IceRunDriver
+   {
+       public static void main(String[] args)
+      { 
+         JFrame frame = new JFrame("Menu");
+         frame.setSize(300, 100);    
+         frame.setLocation(500, 10);
+         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+         IceRunMenu p = new IceRunMenu(frame);
+         frame.setContentPane(p);
+         p.requestFocus();
+         frame.setVisible(true);
+         
+      }
+   }
