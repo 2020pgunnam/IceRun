@@ -44,20 +44,7 @@
          myColor = c;
       }
     
-      /**************************************************************************************
-   	* Draw a circle with specified dimensions and a image in the middle.
-   	* @param myBuffer	   assigns myBuffer to be drawn on
-      * @param icon        assigns icon as image object
-   	***************************************************************************************/
-
       
-      public void draw(Graphics myBuffer, ImageIcon icon) 
-      {
-        
-        myBuffer.setColor(myColor);
-         myBuffer.fillOval((int)(getX() - getRadius()), (int)(getY()-getRadius()), (int)getDiameter(), (int)getDiameter());
-         myBuffer.drawImage(icon.getImage(), getX()- getRadius(), getY() - getRadius(), null); 
-
-      }
-   }
+      
+        }
 
