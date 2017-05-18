@@ -4,7 +4,7 @@
 	* A SpeedPlayer a subclass of Power.The one difference from Power is that
    * SpeedPlayer can draw itself. 
 	
-   * @author Tony lLang and Prateek Gunnam
+   * @author Tony Liang and Prateek Gunnam
 	* @version 1
 	****************************************************************/
    public class SpeedPlayer extends Power
@@ -56,7 +56,7 @@
         
         myBuffer.setColor(myColor);
          myBuffer.fillOval((int)(getX() - getRadius()), (int)(getY()-getRadius()), (int)getDiameter(), (int)getDiameter());
-         myBuffer.drawImage(icon.getImage(), getX()- getRadius(), getY() - getRadius(), null); 
+         myBuffer.drawImage(icon.getImage(), getX()- (getRadius()/2), getY() - (getRadius() / 2), null); 
 
       }
    }
