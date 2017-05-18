@@ -1,24 +1,24 @@
  import java.awt.*;
    import javax.swing.*;
    /*****************************************************************
-     * A Character is the in-game character controlled by the player
+     * A Player is the in-game character controlled by the player
      * @author Tony Liang and Prateek Gunnam
      * @version 1
      ****************************************************************/
-     public class Character
+     public class Player
      {
        private int myX;   // x and y coordinates of center
        private int myY;
        private int mySpeed;
        /*************************************************************
-       * Constructs a MeltIcicle with initial x and y. Sets pre-determined diameter.
+       * Constructs a Player with initial x and y. Sets pre-determined diameter.
        * @param x    initial xPosition
        * @param y    initial yPosition
        * @param s    initial mySpeed
        **************************************************************/
 
 
-       public Character(int x, int y, int s)
+       public Player(int x, int y, int s)
        {
        myX = x;
        myY = y;
