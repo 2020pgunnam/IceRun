@@ -41,7 +41,14 @@
          myBuffer.drawImage(icon.getImage(), getX()- getRadius(), getY() - getRadius(), null); 
 
       }
-      public void flames(Graphics myBuffer)
+      
+      /**************************************************************************************
+   	* Import flames jpeg Image Icon
+   	* @param myBuffer	   assigns myBuffer to be drawn on
+      * @param icon        assigns icon as image object
+   	***************************************************************************************/
+
+      public void flames(Graphics myBuffer, ImageIcon icon)
       {
         /*********************************************************/
         /*                                                       */
