@@ -77,7 +77,7 @@
        }
 
        /**************************************************************************************
-       * Draws a character using a predrawn image
+       * Draws a Player using a predrawn image
        * @param myBuffer    assigns myBuffer to be drawn on
        * @param icon        assigns icon as image object
        ***************************************************************************************/
@@ -87,6 +87,7 @@
        {
         
         icon = new ImageIcon(icon.getImage(), getX(), getY(), null);
+        //draws icon at myX and myY
 
        }
     }
