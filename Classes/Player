@@ -47,7 +47,7 @@
    	* Returns the Player's yPosition
    	* @return y
    	**************************************************************/
-       public void getY()
+       public int getY()
        {
        return myY;
        }
@@ -71,13 +71,13 @@
    	* Sets Player's xPosition to a specified input number
    	* @param x assign x to xPosition
    	**************************************************************/
-       public int setX(int x)
+       public void setX(int x)
        {
        myX = x;
        }
 
        /**************************************************************************************
-       * Draws a Player using a predrawn image
+       * Draws a character using a predrawn image
        * @param myBuffer    assigns myBuffer to be drawn on
        * @param icon        assigns icon as image object
        ***************************************************************************************/
@@ -86,8 +86,11 @@
        public void draw(Graphics myBuffer, ImageIcon icon)
        {
         
-        icon = new ImageIcon(icon.getImage(), getX(), getY(), null);
-        //draws icon at myX and myY
+        /*****************************************
+        *
+        *   draw ImageIcon which holds jpeg of player.
+        *
+        ********************************************/
 
        }
     }
