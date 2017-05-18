@@ -44,7 +44,7 @@
          myRadius = d/2;
       }
       /*************************************************************** 
-   	* Returns the Power's xPosition
+   	* Returns the Power's xPosition from top left corner
    	* @return   xPosition
    	**************************************************************/
       public int getX() 
@@ -52,7 +52,7 @@
          return myX;
       }
        /*************************************************************** 
-   	* Returns the Power's yPosition
+   	* Returns the Power's yPosition from top left corner
    	* @return   yPosition
    	**************************************************************/
       public int getY()      
@@ -75,7 +75,7 @@
 
       public int getRadius()
       {
-      return myDiameter / 2;
+      return myRadius
       }
       
       /***************************************************************
@@ -109,10 +109,18 @@
       * @param bottomEdge   assigns bottomEdge to yPosition limit
    	***************************************************************************************/
 
-      public void randPos(int rightEdge, int bottomEdge)
+      public void placeRandom()
       {
-         myX = (int)(Math.random()* (rightEdge-myDiameter) + myRadius);
-         myY = (int)(Math.random()* (bottomEdge-myDiameter) + ((bottomEdge/2) - myRadius));
+         /** 
+	 * places Power object in random location to the left of the panel
+	 **/
+      }
+      
+      public void slide()
+      {
+         /** 
+	 * gradually moves Power object from left to right side of panel
+	 **/
       }
       
          }
