@@ -17,6 +17,7 @@
    	* @param x    initial xPosition
       * @param y    initial yPosition
       * @param c    initial color
+      *@param t     amount of time icicles dissapear for
    	**************************************************************/
 
 
@@ -29,12 +30,11 @@
       }
 
       /**************************************************************************************
-   	* Draw a circle with specified dimensions and a image in the middle.
+   	* Draw a circle with specified dimensions and a image.
    	* @param myBuffer	   assigns myBuffer to be drawn on
       * @param icon        assigns icon as image object
    	***************************************************************************************/
-
-      
+ 
       public void draw(Graphics myBuffer, ImageIcon icon) 
       {
         
