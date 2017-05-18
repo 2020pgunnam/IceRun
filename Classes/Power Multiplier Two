@@ -55,7 +55,7 @@
       {
         
         myBuffer.setColor(myColor);
-         myBuffer.fillOval((int)(getX() - getRadius()), (int)(getY()-getRadius()), (int)getDiameter(), (int)getDiameter());
+         myBuffer.fillOval(getX(),getY(), getDiameter(), getDiameter());
          myBuffer.drawImage(icon.getImage(), getX()- getRadius(), getY() - getRadius(), null); 
 
       }
