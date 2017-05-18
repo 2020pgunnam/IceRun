@@ -86,11 +86,11 @@
        public void draw(Graphics myBuffer, ImageIcon icon)
        {
         
-        /*****************************************
-        *
-        *   draw ImageIcon which holds jpeg of player.
-        *
-        ********************************************/
+        /***********************************************/
+        /*                                             */
+        /*  draw ImageIcon which holds jpeg of player. */
+        /*                                             */
+        /***********************************************/
 
        }
     }
