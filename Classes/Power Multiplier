@@ -13,6 +13,7 @@
       private int myY;
       private int myDiameter;
       private Color myColor;
+      private int myVal; //multiplier value
       /************************************************************* 
    	* Constructs a Multiplier with initial xPosition specified by x and its
       * initial yPosition specified by y. Sets pre-determined diameter.
@@ -22,11 +23,12 @@
    	**************************************************************/
 
 
-      public Multiplier(int x, int y, Color c)
+      public Multiplier(int x, int y, Color c, int val)
       {
          super(x,y);
          myDiameter = 25;
          myColor = c;
+	 myVal = val;
       }
       
       /************************************************************* 
