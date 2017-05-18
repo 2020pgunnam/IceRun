@@ -11,13 +11,12 @@
       private int myY;
       private int myDiameter;
       private Color myColor;
-      private int myTime;
+      
       /************************************************************* 
    	* Constructs a MeltIcicle with initial x and y. Sets pre-determined diameter.
    	* @param x    initial xPosition
       * @param y    initial yPosition
       * @param c    initial color
-      *@param t     amount of time icicles dissapear for
    	**************************************************************/
 
 
@@ -26,7 +25,7 @@
          super(x,y);
          myDiameter = 25;
          myColor = c;
-	 myTime  = t;
+	 
       }
 
       /**************************************************************************************
@@ -43,5 +42,13 @@
          myBuffer.drawImage(icon.getImage(), getX()- getRadius(), getY() - getRadius(), null); 
 
       }
+      public void flames(Graphics myBuffer)
+      {
+      /**********************************
+      *
+      * animates flames which mmvoe from bottom to top of frame
+      *
+      ************************************/
+   }
    }
 
