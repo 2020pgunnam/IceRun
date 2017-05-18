@@ -1,0 +1,93 @@
+ import java.awt.*;
+   import javax.swing.*;
+   /*****************************************************************
+     * A Character is the in-game character controlled by the player
+     * @author Tony Liang and Prateek Gunnam
+     * @version 1
+     ****************************************************************/
+     public class Character
+     {
+       private int myX;   // x and y coordinates of center
+       private int myY;
+       private int mySpeed;
+       /*************************************************************
+       * Constructs a MeltIcicle with initial x and y. Sets pre-determined diameter.
+       * @param x    initial xPosition
+       * @param y    initial yPosition
+       * @param s    initial mySpeed
+       **************************************************************/
+
+
+       public Character(int x, int y, int s)
+       {
+       myX = x;
+       myY = y;
+     mySpeed = 2;
+       }
+  
+   /*************************************************************** 
+   	* Returns the Player's xPosition
+   	* @return x
+   	**************************************************************/
+
+       public int getX()
+       {
+       return myX;
+       }
+       /*************************************************************** 
+   	* Returns the Player's Speed
+   	* @return speed
+   	**************************************************************/  
+ 
+       public int getSpeed()
+       {
+       return mySpeed;
+       }
+        /*************************************************************** 
+   	* Returns the Player's yPosition
+   	* @return y
+   	**************************************************************/
+       public void getY()
+       {
+       return myY;
+       }
+      /*************************************************************** 
+   	* Sets Player's speed to a specified input number
+   	* @param s assign s to Speed
+   	**************************************************************/
+       public void setSpeed(int s)
+       {
+       mySpeed = s;
+       }
+      /*************************************************************** 
+   	* Sets Player's yPosition to a specified input number
+   	* @param y assign y to yPosition
+   	**************************************************************/
+       public void setY(int y)
+       {
+       myY = y;
+       }
+      /*************************************************************** 
+   	* Sets Player's xPosition to a specified input number
+   	* @param x assign x to xPosition
+   	**************************************************************/
+       public int setX(int x)
+       {
+       myX = x;
+       }
+
+       /**************************************************************************************
+       * Draws a character using a predrawn image
+       * @param myBuffer    assigns myBuffer to be drawn on
+       * @param icon        assigns icon as image object
+       ***************************************************************************************/
+
+      
+       public void draw(Graphics myBuffer, ImageIcon icon)
+       {
+        
+        icon = new ImageIcon(icon.getImage(), getX(), getY(), null);
+
+       }
+    }
+
