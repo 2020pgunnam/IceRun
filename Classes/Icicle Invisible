@@ -7,7 +7,7 @@
 	* Invisible is a class that maintains information about its xPoints and yPoints. 
    * An Invisible knows how to return its the get the x and y value of its tip, its height,
 	* and its base length.
-   * The Rectangle can also set its length as well as height.  
+   * The Invisible can also set its length as well as height.  
 	
    * @author Tony Liang and Prateek Gunnam
 	* @version 1
