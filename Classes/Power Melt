@@ -5,7 +5,7 @@
    * @author Tony Liang and Prateek Gunnam
 	* @version 1
 	****************************************************************/
-   public class MeltIcicle extends Power
+   public class Melt extends Power
    {
       private int myX;   // x and y coordinates of center
       private int myY;
@@ -19,8 +19,7 @@
       * @param c    initial color
    	**************************************************************/
 
-
-      public MeltIcicle(int x, int y, Color c,int t)
+      public Melt(int x, int y, Color c,int t)
       {
          super(x,y);
          myDiameter = 25;
