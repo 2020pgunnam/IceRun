@@ -36,7 +36,8 @@ public class IceRunMenu extends JPanel
    {
       public void actionPerformed(ActionEvent e)
       {
-         
+      //create new JPanel with 3 buttons: easy, medium, or hard. Change rate powerups appear or speed icicles fall based
+      //on the difficulty button pressed.
       }
       }
       
