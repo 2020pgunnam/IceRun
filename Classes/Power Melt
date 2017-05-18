@@ -1,7 +1,7 @@
    import java.awt.*;
    import javax.swing.*;
   /*****************************************************************
-	* A MeltIcicle a subclass of Power. It removes any falling icicles for a set number of seconds.
+	* A Melt a subclass of Power. It removes any falling icicles for a set number of seconds.
    * @author Tony Liang and Prateek Gunnam
 	* @version 1
 	****************************************************************/
@@ -13,7 +13,7 @@
       private Color myColor;
       
       /************************************************************* 
-   	* Constructs a MeltIcicle with initial x and y. Sets pre-determined diameter.
+   	* Constructs a Melt with initial x and y. Sets pre-determined diameter.
    	* @param x    initial xPosition
       * @param y    initial yPosition
       * @param c    initial color
