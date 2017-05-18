@@ -22,15 +22,11 @@ public class IceRunPanel extends JPanel
       myBuffer = myImage.getGraphics();
       myBuffer.setColor(BACKGROUND);
       myBuffer.fillRect(0, 0, FRAME,FRAME);
-      int xPos = (int)(Math.random()*(FRAME-100) + 50);
-      int yPos = (int)(Math.random()*(FRAME-100)+ 50);
-      /******************************/
-      /* Instantiate class objects  */
-      /******************************/
+      
       int[] array = {200,250,225};
       int[] array2 = {30,30,150};
      icicle = new Icicle(array, array2, Color.RED);
-      
+      //instantiate player near bottom of frame
       addKeyListener(new Key());
       setFocusable(true);
       t = new Timer(5, new Listener());
@@ -47,22 +43,17 @@ public class IceRunPanel extends JPanel
       
          if(e.getKeyCode() == KeyEvent.VK_W)
          {
-           
+         //have player jump
          }
       
-         if(e.getKeyCode() == KeyEvent.VK_S)
+         if(e.getKeyCode() == KeyEvent.VK_D)
          {
-                     
+         //have player move right        
          }
       
-         if(e.getKeyCode() == KeyEvent.VK_UP)
+         if(e.getKeyCode() == KeyEvent.VK_A)
          {
-           
-         }
-      
-         if(e.getKeyCode() == KeyEvent.VK_DOWN)
-         {
-            
+         //have player move left
          }
       
         /************************************/
@@ -76,11 +67,7 @@ public class IceRunPanel extends JPanel
    {
       g.drawImage(myImage, 0, 0, getWidth(), getHeight(), null);
      
-      /*********************************/
-      /*                               */
-      /*  Your code goes here.         */
-      /*                               */
-      /*********************************/
+      //paint any new changes, such as icicles falling and player moving
 
       
    }
@@ -90,24 +77,13 @@ public class IceRunPanel extends JPanel
       {
         icicle.draw(myBuffer);
         
-        /*********************************/
-        /*                               */
-        /*  Your code goes here.         */
-        /*                               */
-        /*********************************/
         
       }
    }
    private void drop(Icicle icicle)
    {
-        /*********************************/
-        /*                               */
-        /*  Your code goes here.         */
-        /*                               */
-        /*********************************/
-        
-
-   
+        //have icicles move from top of frame to bottom of frame to make icicles look 
+	//like they are falling
    
    }   
    }
