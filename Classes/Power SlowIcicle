@@ -1,8 +1,8 @@
    import java.awt.*;
    import javax.swing.*;
   /*****************************************************************
-	* A SlowIcicle a subclass of Power.The one difference from Power is that
-   * SlowIcicle can draw itself. 
+	* A SlowIcicle a subclass of Power. SlowIcicle slows the speed that
+	* icicles fall at.
 	
    * @author Tony Liang and Prateek Gunnam
 	* @version 1
@@ -13,6 +13,7 @@
       private int myY;
       private int myDiameter;
       private Color myColor;
+      private int mySlowSpeed
       /************************************************************* 
    	* Constructs a SlowIcicle with initial xPosition specified by x and its
       * initial yPosition specified by y. Sets pre-determined diameter.
@@ -22,11 +23,12 @@
    	**************************************************************/
 
 
-      public SlowIcicle(int x, int y, Color c)
+      public SlowIcicle(int x, int y, Color c, int s)
       {
          super(x,y);
          myDiameter = 25;
          myColor = c;
+	 mySlowSpeed = s;
       }
       
       /************************************************************* 
@@ -42,6 +44,7 @@
       {
          super(x,y,d);
          myColor = c;
+	 mySlowSpeed = 2;
       }
       
       /**************************************************************************************
