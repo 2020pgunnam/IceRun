@@ -7,7 +7,7 @@
 	* Icicle is a class that maintains information about its xPoints and yPoints. 
    * An Icicle knows how to return its the get the x and y value of its tip, its height,
 	* and its base length.
-   * The Rectangle can also set its length as well as height.  
+   * The Icicle can also set its length as well as height.  
 	
    * @author Tony Liang and Prateek Gunnam
 	* @version 1
@@ -46,45 +46,79 @@
          myColor = c;
          
       }
-    // accessor methods
+      /*************************************************************** 
+   	* Returns the Icicles's Tip xPosition
+   	* @return   xPosition of Point
+   	**************************************************************/
+
       public int getX() 
       { 
          return (myXPoints[0] + myXPoints[1]) /2;
       }
+      /*************************************************************** 
+   	* Returns the Icicles's Tip yPosition
+   	* @return   yPosition of Point
+   	**************************************************************/
       public int getY()      
       { 
-         return myYPoints[0];
+         return myYPoints[2];
       }
+      /*************************************************************** 
+   	* Returns the Icicles's Height
+   	* @return   height
+   	**************************************************************/
       public int getHeight() 
       { 
          return myYPoints[1] - myYPoints[2];
       }
+      /*************************************************************** 
+   	* Returns the Icicles's Base
+   	* @return   base
+   	**************************************************************/
       public int getBase() 
       { 
          return myXPoints[1] - myXPoints[0];
       }
-
+      /*************************************************************** 
+   	* Returns the Icicles's Color
+   	* @return   color
+   	**************************************************************/
       public Color getColor() 
       { 
          return myColor;
       }
-         // modifier methods
+      /***************************************************************
+   	* Sets the xPositions to the specified input array.
+   	* @param xPoints	 assigns xPoints to xPositions
+   	**************************************************************/
+
       public void setX(int[] xPoints)
       {
           myXPoints = new int[]{xPoints[0],xPoints[1],xPoints[2]};
          
       } 
+      /***************************************************************
+   	* Sets the yPositions to the specified input array.
+   	* @param yPoints	 assigns yPoints to yPositions
+   	**************************************************************/
       public void setY(int[] yPoints)
       {
          myYPoints = new int[]{yPoints[0],yPoints[1],yPoints[2]};
 
       } 
+      /***************************************************************
+   	* Sets the Color to the specified color.
+   	* @param c	 assigns c to color
+   	**************************************************************/
       public void setColor(Color c)
       {
          myColor = c;
       }
-         //	 instance methods
-     
+      
+      /***************************************************************
+   	* Draws a polygon with 3 points, a specified Color,and with an array of points
+   	* @param myBuffer	 assigns myBuffer to be drawn on
+   	**************************************************************/
       public void draw(Graphics myBuffer) 
       {
          myBuffer.setColor(myColor);
