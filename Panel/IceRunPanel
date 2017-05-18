@@ -10,9 +10,7 @@ public class IceRunPanel extends JPanel
    
 
    private BufferedImage myImage;
-   private Graphics myBuffer;
-   private SpeedPlayer power;
-   private Icicle icicle;
+   private Graphics myBuffer; 
    private Timer t; 
 
 		  
@@ -23,10 +21,9 @@ public class IceRunPanel extends JPanel
       myBuffer.setColor(BACKGROUND);
       myBuffer.fillRect(0, 0, FRAME,FRAME);
       
-      int[] array = {200,250,225};
-      int[] array2 = {30,30,150};
-     icicle = new Icicle(array, array2, Color.RED);
-      //instantiate player near bottom of frame
+       /******************************/
+       /* Instantiate class objects  */
+       /******************************/
       addKeyListener(new Key());
       setFocusable(true);
       t = new Timer(5, new Listener());
@@ -68,22 +65,32 @@ public class IceRunPanel extends JPanel
       g.drawImage(myImage, 0, 0, getWidth(), getHeight(), null);
      
       //paint any new changes, such as icicles falling and player moving
-
+       /*******************************************************************/
+       /*paint any new changes, such as icicles falling and player moving**/
+       /*					  			  */
+       /*******************************************************************/
       
    }
    private class Listener implements ActionListener
    {
       public void actionPerformed(ActionEvent e)
       {
-        icicle.draw(myBuffer);
+        /*********************************/
+        /*                               */
+        /*  Your code goes here.         */
+        /*                               */
+        /*********************************/
+
         
         
       }
    }
    private void drop(Icicle icicle)
-   {
-        //have icicles move from top of frame to bottom of frame to make icicles look 
-	//like they are falling
+   {	
+   	/*****************************************************************************/
+        /*have icicles move from top of frame to bottom of frame to make icicles look*/
+	/*like they are falling							     */
+	/*****************************************************************************/
    
    }   
    }
