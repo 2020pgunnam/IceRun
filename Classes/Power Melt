@@ -43,11 +43,11 @@
       }
       public void flames(Graphics myBuffer)
       {
-      /**********************************
-      *
-      * animates flames which mmvoe from bottom to top of frame
-      *
-      ************************************/
-   }
+        /*********************************************************/
+        /*                                                       */
+        /*  animate flames which move from bttom to top of frame */
+        /*                                                       */
+        /*********************************************************/   
+        }
    }
 
