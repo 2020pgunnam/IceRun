@@ -9,11 +9,11 @@
 	****************************************************************/
    public class Multiplier extends Power
    {
-      private int myX;   // x and y coordinates of center
+      private int myX;   
       private int myY;
       private int myDiameter;
       private Color myColor;
-      private int myVal; //multiplier value
+      private int myVal; 
       /************************************************************* 
    	* Constructs a Multiplier with initial xPosition specified by x and its
       * initial yPosition specified by y. Sets pre-determined diameter.
@@ -28,7 +28,7 @@
          super(x,y);
          myDiameter = 25;
          myColor = c;
-	 myVal = val;
+	      myVal = val;
       }
       
       /************************************************************* 
@@ -44,6 +44,25 @@
       {
          super(x,y,d);
          myColor = c;
+      }
+      /*************************************************************** 
+   	* Returns the Multiplier's value
+   	* @return value
+   	**************************************************************/
+
+      public int getVal()
+      {
+      return myVal;
+      }
+      
+      /***************************************************************
+   	* Sets the value to the specified input number.
+   	* @param v	 assigns v to value
+   	**************************************************************/
+
+      public void setVal(int v)
+      {
+      myVal = v;
       }
     
       
