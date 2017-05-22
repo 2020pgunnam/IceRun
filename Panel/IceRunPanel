@@ -1,17 +1,21 @@
-
+   //Name:    Date:
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
 public class IceRunPanel extends JPanel
 {
-   private static final int FRAME = 800;
+   private static final int FRAME = 750;
    private static final Color BACKGROUND = Color.WHITE;
    
 
    private BufferedImage myImage;
    private Graphics myBuffer; 
-   private Timer t; 
+   private Timer t;
+   private Icicle bob;
+   private SpeedPlayer speed;
+   private ImageIcon icon;
+   
 
 		  
    public IceRunPanel()
@@ -20,10 +24,9 @@ public class IceRunPanel extends JPanel
       myBuffer = myImage.getGraphics();
       myBuffer.setColor(BACKGROUND);
       myBuffer.fillRect(0, 0, FRAME,FRAME);
-      
-       /******************************/
-       /* Instantiate class objects  */
-       /******************************/
+      bob = new Icicle();
+      speed = new SpeedPlayer(20,20, Color.RED);
+      icon = new ImageIcon("/images/fire.jpg");
       addKeyListener(new Key());
       setFocusable(true);
       t = new Timer(5, new Listener());
@@ -38,19 +41,25 @@ public class IceRunPanel extends JPanel
       public void keyPressed(KeyEvent e)
       {
       
-         if(e.getKeyCode() == KeyEvent.VK_W)
+         if(e.getKeyCode() == KeyEvent.VK_RIGHT)
          {
-         //have player jump
+         speed.setX(speed.getX() + 10);
          }
       
-         if(e.getKeyCode() == KeyEvent.VK_D)
+         if(e.getKeyCode() == KeyEvent.VK_LEFT)
          {
-         //have player move right        
+         speed.setX(speed.getX() - 10);        
          }
       
-         if(e.getKeyCode() == KeyEvent.VK_A)
+         if(e.getKeyCode() == KeyEvent.VK_UP)
          {
-         //have player move left
+         speed.setY(speed.getY() - 10);
+         }
+         
+         
+         if(e.getKeyCode() == KeyEvent.VK_DOWN  )
+         {
+            speed.setY(speed.getY() + 10);
          }
       
         /************************************/
@@ -65,35 +74,54 @@ public class IceRunPanel extends JPanel
       g.drawImage(myImage, 0, 0, getWidth(), getHeight(), null);
      
       //paint any new changes, such as icicles falling and player moving
-       /*******************************************************************/
-       /*paint any new changes, such as icicles falling and player moving**/
-       /*					  			  */
-       /*******************************************************************/
+       
       
    }
    private class Listener implements ActionListener
    {
       public void actionPerformed(ActionEvent e)
       {
-        /*********************************/
-        /*                               */
-        /*  Your code goes here.         */
-        /*                               */
-        /*********************************/
-
+         myBuffer.setColor(BACKGROUND);
+         myBuffer.fillRect(0,0,FRAME,FRAME);
+        
+        
+         bob.setColor(Color.RED);
+         bob.draw(myBuffer);
+         drop(bob);
+         speed.draw(myBuffer,icon);
+         
+         
+      
+      
+         
+      
+         repaint();
+      
         
         
       }
    }
    private void drop(Icicle icicle)
    {	
-   	/*****************************************************************************/
-        /*have icicles move from top of frame to bottom of frame to make icicles look*/
-	/*like they are falling							     */
-	/*****************************************************************************/
+      int[] array = icicle.getYPoints();
+      for(int x = 0; x < array.length; x++)
+         array[x] = array[x] + 5;
+      icicle.setY(array);
+      
+   
+   }
+   
+   private void reset(Icicle icicle)
+   {
+   
+   
+   
+   
+   
+   
    
    }   
-   }
+}
    
       
   
