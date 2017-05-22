@@ -1,0 +1,84 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+public class IceRunDifficulty extends JPanel
+{
+   private JLabel label;
+	protected JFrame frame, frame2;
+	
+   private IceRunMenu p;
+   private JButton easy, hard, back;
+
+public IceRunDifficulty()
+   {
+   
+   setLayout(new FlowLayout());
+    
+    easy = new JButton("Easy");
+    easy.addActionListener (new EasyListener());
+    add(easy);
+		
+    hard = new JButton("Hard");
+	 hard.addActionListener(new HardListener());
+	 add(hard);
+		
+    back = new JButton("Back");
+	 back.addActionListener(new BackListener());
+	 add(back);
+   
+   
+   
+   }
+   
+   
+    private class EasyListener implements ActionListener
+   {
+      public void actionPerformed(ActionEvent e)
+      {
+          JDialog dialog = new JDialog(frame, "Ice Run", true);
+          
+				dialog.setContentPane(new IceRunPanel());
+				dialog.pack();
+            dialog.setSize(750,750);
+            dialog.setLocation(300,0);
+				dialog.setVisible(true);
+         
+          
+          
+        
+      }
+      }
+      
+      private class HardListener implements ActionListener
+   {
+      public void actionPerformed(ActionEvent e)
+      {
+			 	JDialog dialog = new JDialog(frame, "Ice Run", true);
+          
+				dialog.setContentPane(new IceRunPanel());
+				dialog.pack();
+            dialog.setSize(750,750);
+            dialog.setLocation(300,0);
+				dialog.setVisible(true);
+            
+
+      }
+   }
+      
+      private class BackListener implements ActionListener
+   {
+      public void actionPerformed(ActionEvent e)
+      {
+          //Goes back IceRunMenu
+      }
+      }
+      
+      
+   
+
+   
+   
+   
+   
+   }
