@@ -85,12 +85,15 @@ public class IceRunPanel extends JPanel
          myBuffer.fillRect(0,0,FRAME,FRAME);
         
         
-         bob.setColor(Color.RED);
+         bob.setColor(Color.BLUE);
          bob.draw(myBuffer);
          drop(bob);
          speed.draw(myBuffer,icon);
          
-         
+         if (bob.getY(0) >= 800 && bob.getY(1) >= 800)
+         {
+         reset(bob);
+         }
       
       
          
@@ -113,15 +116,16 @@ public class IceRunPanel extends JPanel
    
    private void reset(Icicle icicle)
    {
-   
-   
+   int[] newPoints = new int[]{-100,-100,50};
+   icicle.setY(newPoints);
+   }
    
    
    
    
    
    }   
-}
+
    
       
   
