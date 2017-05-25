@@ -147,4 +147,21 @@
         
       }
       
+      /***************************************************************
+   	* Reset to random xPosition and random yPosition above the frame, keeping constant dimensions
+   	* @param icicle assigns icicle to be affected
+   	**************************************************************/
+
+      public void reset()
+      {
+      int point = (int)(Math.random() * (800 - getBase()));
+      int[] newXPoints = new int[]{point, point + getBase(), point + (getBase() / 2)};
+      setX(newXPoints);
+      int pratek = -1 * ((int)(Math.random() * 1000));
+      int[] newYPoints = new int[]{pratek, pratek, pratek - getHeight()};
+      setY(newYPoints);
+      
+      }
+
+      
    }
