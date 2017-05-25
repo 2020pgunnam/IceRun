@@ -5,16 +5,17 @@ import java.awt.event.*;
 import java.awt.image.*;
 public class IceRunPanel extends JPanel
 {
-   private static final int FRAME = 750;
+   private static final int FRAME = 800;
    private static final Color BACKGROUND = Color.WHITE;
    
 
    private BufferedImage myImage;
    private Graphics myBuffer; 
    private Timer t;
-   private Icicle bob;
+   private Icicle[] bob;
    private SpeedPlayer speed;
-   private ImageIcon icon;
+   private ImageIcon background;
+   private int barn;
    
 
 		  
@@ -24,9 +25,17 @@ public class IceRunPanel extends JPanel
       myBuffer = myImage.getGraphics();
       myBuffer.setColor(BACKGROUND);
       myBuffer.fillRect(0, 0, FRAME,FRAME);
-      bob = new Icicle();
+     
+     barn = 3;
+     bob = new Icicle[20];
+      
+      for(int x = 0; x < bob.length; x++)
+         bob[x] = new Icicle();
+      
       speed = new SpeedPlayer(20,20, Color.RED);
-      icon = new ImageIcon("/images/fire.jpg");
+     
+      background = new ImageIcon("images/fire.jpg");
+     
       addKeyListener(new Key());
       setFocusable(true);
       t = new Timer(5, new Listener());
@@ -34,6 +43,7 @@ public class IceRunPanel extends JPanel
    
          
    }
+   
    private class Key extends KeyAdapter
    
    {
@@ -43,17 +53,17 @@ public class IceRunPanel extends JPanel
       
          if(e.getKeyCode() == KeyEvent.VK_RIGHT)
          {
-         speed.setX(speed.getX() + 10);
+            speed.setX(speed.getX() + 10);
          }
       
          if(e.getKeyCode() == KeyEvent.VK_LEFT)
          {
-         speed.setX(speed.getX() - 10);        
+            speed.setX(speed.getX() - 10);        
          }
       
          if(e.getKeyCode() == KeyEvent.VK_UP)
          {
-         speed.setY(speed.getY() - 10);
+            speed.setY(speed.getY() - 10);
          }
          
          
@@ -80,51 +90,69 @@ public class IceRunPanel extends JPanel
    private class Listener implements ActionListener
    {
       public void actionPerformed(ActionEvent e)
-      {
+      {     
+         
          myBuffer.setColor(BACKGROUND);
          myBuffer.fillRect(0,0,FRAME,FRAME);
-        
-        
-         bob.setColor(Color.BLUE);
-         bob.draw(myBuffer);
-         drop(bob);
-         speed.draw(myBuffer,icon);
+         myBuffer.drawImage(background.getImage(), 100,100,null);
          
-         if (bob.getY(0) >= 800 && bob.getY(1) >= 800)
-         {
-         reset(bob);
+         
+         for(int x = 0; x < bob.length; x++)
+         {  
+            bob[x].setColor(Color.BLUE);
+            bob[x].draw(myBuffer);
+            drop(bob[x], barn);
+            
+            if(bob[x].getY(0) > 300)
+               barn = 4;
+            
+         
+            if (bob[x].getY(0) >= 800 && bob[x].getY(1) >= 800)
+            {
+               bob[x].reset();
+            }
+            
+            
+         
          }
-      
-      
+                        
+           
+
+
          
-      
+         
          repaint();
       
         
         
       }
    }
-   private void drop(Icicle icicle)
+   private void drop(Icicle icicle, int speed)
    {	
       int[] array = icicle.getYPoints();
+      
       for(int x = 0; x < array.length; x++)
-         array[x] = array[x] + 5;
+         array[x] = array[x] + speed;
       icicle.setY(array);
       
    
    }
    
-   private void reset(Icicle icicle)
+   /*private void reset(Icicle icicle)
    {
-   int[] newPoints = new int[]{-100,-100,50};
-   icicle.setY(newPoints);
-   }
+   int point = (int)(Math.random() * 750);
+   int[] newXPoints = new int[]{point, point + 50, point + 25};
+   icicle.setX(newXPoints);
+   int[] newYPoints = new int[]{-100,-100,-50};
+   icicle.setY(newYPoints);
+   
+   }*/
    
    
    
    
    
-   }   
+}   
 
    
       
