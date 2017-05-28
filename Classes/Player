@@ -10,6 +10,24 @@
        private int myX;   // x and y coordinates of center
        private int myY;
        private int mySpeed;
+       private ImageIcon myImage;
+       
+       /************************************************************* 
+   	* Constructs with predetermined xPoint, yPoint
+      * @ param s  initial mySpeed
+   	**************************************************************/
+
+       public Player(int s, ImageIcon icon)
+       {
+       myX = 400;
+       myY = 650;
+       mySpeed = s;
+       myImage = icon;
+        
+       
+       
+       }
+
        /*************************************************************
        * Constructs a Player with initial x and y. Sets pre-determined diameter.
        * @param x    initial xPosition
@@ -17,12 +35,13 @@
        * @param s    initial mySpeed
        **************************************************************/
 
-
-       public Player(int x, int y, int s)
+      
+       public Player(int x, int y, int s, ImageIcon icon)
        {
        myX = x;
        myY = y;
-     mySpeed = 2;
+       mySpeed = s;
+       myImage = icon;
        }
   
    /*************************************************************** 
@@ -51,6 +70,17 @@
        {
        return myY;
        }
+        /*************************************************************** 
+   	* Returns the Player's image
+   	* @return icon
+   	**************************************************************/
+       public ImageIcon getImage()
+       {
+       return myImage;
+       }
+       
+       
+       
       /*************************************************************** 
    	* Sets Player's speed to a specified input number
    	* @param s assign s to Speed
@@ -75,6 +105,15 @@
        {
        myX = x;
        }
+       
+       /*************************************************************** 
+   	* Sets Player's image to a specified input ImageIcon
+   	* @param icon assign icon to Image
+   	**************************************************************/
+       public void setImage(ImageIcon icon)
+       {
+       myImage = icon;
+       }
 
        /**************************************************************************************
        * Draws a character using a predrawn image
@@ -84,13 +123,13 @@
 
       
        public void draw(Graphics myBuffer, ImageIcon icon)
-       {
-        
-        /***********************************************/
-        /*                                             */
-        /*  draw ImageIcon which holds jpeg of player. */
-        /*                                             */
-        /***********************************************/
+       { 
+         
+          myBuffer.setColor(Color.WHITE);
+         myBuffer.fillOval(getX(), getY(),100 , 100);
+         myBuffer.drawImage(icon.getImage(), getX(), getY(), null); 
+ 
+
 
        }
     }
