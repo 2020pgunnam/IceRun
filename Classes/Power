@@ -17,8 +17,8 @@
      /************************************************************* 
    	* Constructs a Power with initial xPosition specified by x and its
       * initial yPosition specified by y. Sets pre-determined diameter.
-   	* @param x    initial length
-      * @param y    initial height
+   	* @param x    initial xPosition
+      * @param y    initial yPosition
    	**************************************************************/
 
       public Power(int x, int y)
@@ -31,8 +31,8 @@
        /************************************************************* 
    	* Constructs a Power with initial xPosition specified by x and its
       * initial yPosition specified by y. 
-   	* @param x    initial length
-      * @param y    initial height
+   	* @param x    initial xPosition
+      * @param y    initial yPosition
       * @param d    inital diameter
    	**************************************************************/
 
@@ -44,7 +44,7 @@
          myRadius = d/2;
       }
       /*************************************************************** 
-   	* Returns the Power's xPosition from top left corner
+   	* Returns the Power's xPosition
    	* @return   xPosition
    	**************************************************************/
       public int getX() 
@@ -52,7 +52,7 @@
          return myX;
       }
        /*************************************************************** 
-   	* Returns the Power's yPosition from top left corner
+   	* Returns the Power's yPosition
    	* @return   yPosition
    	**************************************************************/
       public int getY()      
@@ -75,7 +75,7 @@
 
       public int getRadius()
       {
-      return myRadius
+      return myDiameter / 2;
       }
       
       /***************************************************************
@@ -104,23 +104,15 @@
       myDiameter = d;
       }
       /**************************************************************************************
-   	* Sets the xPosition and yPosition of the rectangle to a random number within the frame.
+   	* Sets the xPosition and yPosition of the power to a random number within the frame.
    	* @param rightEdge	 assigns rightEdge to xPosition limit
       * @param bottomEdge   assigns bottomEdge to yPosition limit
    	***************************************************************************************/
 
-      public void placeRandom()
+      public void randPos(int rightEdge, int bottomEdge)
       {
-         /** 
-	 * places Power object in random location to the left of the panel
-	 **/
-      }
-      
-      public void slide()
-      {
-         /** 
-	 * gradually moves Power object from left to right side of panel
-	 **/
-      }
+         myX = (int)(Math.random()* (rightEdge-myDiameter) + myRadius);
+         myY = 700;
+        }
       
          }
