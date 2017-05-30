@@ -1,56 +1,77 @@
 
-   import javax.swing.*;
-   import java.awt.*;
-   import java.awt.event.*;
-   import java.text.DecimalFormat;
-    public class SetBackgroundPanel extends JPanel
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.text.DecimalFormat;
+public class SetBackgroundPanel extends JPanel
+{
+   private JLabel top;
+   private String selectedOption;
+   public String finalOption;
+
+   
+   public SetBackgroundPanel()
    {
-      private JLabel top;
+      setLayout(new BorderLayout());
+   
+      JPanel header = new JPanel();
+      header.setLayout(new FlowLayout());
+      top = new JLabel("Pick a Background:");
       
-       public SetBackgroundPanel()
-      {
-         setLayout(new BorderLayout());
+      top.setForeground(Color.BLUE);
       
-         JPanel header = new JPanel();
-         header.setLayout(new FlowLayout());
-         top = new JLabel("Pick a Background:");
-         
-         top.setForeground(Color.BLUE);
-         
-         header.add(top);
-         
-         add(header, BorderLayout.NORTH);
-         
-         JPanel buttons = new JPanel();
-         buttons.setLayout(new GridLayout(3,3,10,0));
-         add(buttons, BorderLayout.CENTER);
-         addButton(buttons, "img1", "img1");
-         addButton(buttons, "img2", "img2");
-         addButton(buttons, "img3","img3");
-         addButton(buttons, "img4", "img4");
-         addButton(buttons, "img5", "img5");
-         addButton(buttons, "img6", "img6");
-         addButton(buttons, "img7", "img7");
-         addButton(buttons, "img8", "img8");
-         addButton(buttons, "img9", "img9");
-      }
-       private void addButton(JPanel panel, String s, String imgName)
+      header.add(top);
+      
+      add(header, BorderLayout.NORTH);
+      
+      JPanel buttons = new JPanel();
+      buttons.setLayout(new GridLayout(3,3,10,0));
+      add(buttons, BorderLayout.CENTER);
+      addButton(buttons, "img1", "img1");
+      addButton(buttons, "img2", "img2");
+      addButton(buttons, "img3","img3");
+      addButton(buttons, "img4", "img4");
+      addButton(buttons, "img5", "img5");
+      addButton(buttons, "img6", "img6");
+      addButton(buttons, "img7", "img7");
+      addButton(buttons, "img8", "img8");
+      addButton(buttons, "img9", "img9");
+      
+      JPanel c = new JPanel();
+      c.setLayout(new FlowLayout());
+      JButton confirm = new JButton("Confirm Selection");
+      confirm.addActionListener(new ConfirmListener());
+      c.add(confirm);
+      add(c, BorderLayout.SOUTH);
+   }
+   private void addButton(JPanel panel, String s, String imgName)
+   {
+      JButton button = new JButton(s);
+      button.addActionListener(new Listener(imgName));
+      panel.add(button);
+        
+   }
+   private class Listener implements ActionListener
+   {
+      private String imgName;
+      public Listener(String name)
       {
-         JButton button = new JButton(s);
-         button.addActionListener(new Listener(imgName));
-         panel.add(button);
-           
+         imgName = name;
       }
-       private class Listener implements ActionListener
+      public void actionPerformed(ActionEvent e)
       {
-         private String imgName;
-          public Listener(String name)
-         {
-            imgName = name;
-         }
-          public void actionPerformed(ActionEvent e)
-         {
-           	
-         }
+         selectedOption = imgName;
+         System.out.println("Selected: " + selectedOption);//test code
       }
    }
+   
+   private class ConfirmListener implements ActionListener
+   {
+      public void actionPerformed(ActionEvent e)
+      {
+      finalOption = selectedOption;
+      System.out.println("Final: " + finalOption);
+      System.exit(0);
+      }
+   }
+}
