@@ -3,7 +3,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.image.*;
-public class IceRunPanel extends JPanel
+
+public class IceRunPanel extends JPanel implements KeyListener
 {
    private static final int FRAME = 800;
    private static final Color BACKGROUND = Color.WHITE;
@@ -11,93 +12,103 @@ public class IceRunPanel extends JPanel
 
    private BufferedImage myImage;
    private Graphics myBuffer; 
-   private Timer t;
+   private Timer t, timer;
    private Icicle[] bob;
    private SpeedPlayer speed;
+   private Melt melt;
+   private SlowIcicle slow;
+   private Multiplier two, four;
    private Player player;
-   private ImageIcon fire, right, left;
-   private int playerSpeed;
+   private ImageIcon fire, right, left, speedPic, twoPic, fourPic, slowPic;
+   private int playerSpeed, dropSpeed, count;
    private double tmpPwr;
-   private boolean upDir, downDir, leftDir, rightDir, boolPwr;
+   private boolean  boolSpeedPwr, boolSlowPwr, boolMeltPwr, boolTimer, boolSlowDraw, boolSpeedDraw, boolMeltDraw;
+  
    
    
 
 		  
-   public IceRunPanel()
+   public IceRunPanel() 
    {  
-      playerSpeed = 8;
+      boolTimer = false;
+      count = 15;
+      dropSpeed = 3;
+      playerSpeed = 9;
       myImage =  new BufferedImage(FRAME, FRAME, BufferedImage.TYPE_INT_RGB);
       myBuffer = myImage.getGraphics();
       myBuffer.setColor(BACKGROUND);
       myBuffer.fillRect(0, 0, FRAME,FRAME);
      
       
-     fire = new ImageIcon("images/fire.jpg");
-     right = new ImageIcon("images/RightPlayer.jpg");
-     left = new ImageIcon("images/LeftPlayer.jpg");
+     fire = new ImageIcon("images/fire.png");
+     speedPic = new ImageIcon("images/speed.png");
+     right = new ImageIcon("images/RightPlayer.png");
+     left = new ImageIcon("images/LeftPlayer.png");
+     twoPic = new ImageIcon("images/two.png");
+     fourPic = new ImageIcon("images/four.png");
+     slowPic = new ImageIcon("images/slow.png");
      
-     bob = new Icicle[20];
+     bob = new Icicle[15];
       
      for(int x = 0; x < bob.length; x++)
         bob[x] = new Icicle();
       
-      speed = new SpeedPlayer(20,20, Color.RED);
+      speed = new SpeedPlayer(20,20, Color.BLACK);
       speed.randPos(FRAME,FRAME);
+      
+      slow = new SlowIcicle(20,20, Color.YELLOW);
+      slow.randPos(FRAME,FRAME);
+      
+      melt = new Melt(2,2,Color.RED);
+      melt.randPos(FRAME,FRAME);
+      
       player = new Player(2,right);
     
      
-      addKeyListener(new Key());
+      addKeyListener(this);
       setFocusable(true);
+      
       t = new Timer(5, new Listener());
       t.start();
-   
+      
+    
          
    }
+      public void keyTyped(KeyEvent e)
+      {
+      }
   
-   private class Key extends KeyAdapter
-   
-   {  
       public void keyReleased(KeyEvent e) 
       {
-    
-         if(e.getKeyCode() == KeyEvent.VK_RIGHT)
+      if(e.getKeyCode() == KeyEvent.VK_RIGHT)
          {  
-            rightDir = false;
+            
+            player.setX(player.getX());
+            
          }
-         else
-            rightDir = true;
       
          if(e.getKeyCode() == KeyEvent.VK_LEFT)
          {  
-            leftDir = false;
-                    
+            
+           
+            player.setX(player.getX() ); 
+                   
          }
-         else
-            leftDir = true;
       
          if(e.getKeyCode() == KeyEvent.VK_UP)
          {  
-            upDir = false;
-
+            
+            player.setY(player.getY());
+            
          }
-         else
-            upDir = true;
          
          
-         if(e.getKeyCode() == KeyEvent.VK_DOWN  )
-         {  
-            downDir = false;
-          
+         if(e.getKeyCode() == KeyEvent.VK_DOWN)
+         { 
+            player.setY(player.getY());
          }
-         else
-            downDir = true;
-      
-       
-      
-   
-   
 
-   }
+      }
 
    
       public void keyPressed(KeyEvent e)
@@ -105,41 +116,40 @@ public class IceRunPanel extends JPanel
       
          if(e.getKeyCode() == KeyEvent.VK_RIGHT)
          {  
-           if( rightDir = true){
+            
             player.setImage(right);
             player.setX(player.getX() + playerSpeed);
-            }
+            
+            
          }
       
          if(e.getKeyCode() == KeyEvent.VK_LEFT)
          {  
-             if( leftDir = true){
-
+            
             player.setImage(left);
             player.setX(player.getX() - playerSpeed); 
-            }       
+                               
          }
       
          if(e.getKeyCode() == KeyEvent.VK_UP)
          {  
-             if( upDir = true){
-
+            
             player.setY(player.getY() - playerSpeed);
-            }
+            
          }
          
          
-         if(e.getKeyCode() == KeyEvent.VK_DOWN  )
-         {  
-            if( downDir = true){
+         if(e.getKeyCode() == KeyEvent.VK_DOWN)
+         { 
             player.setY(player.getY() + playerSpeed);
-            }
          }
       
        
       }
+
+
+        
    
-   }
   
    public void paintComponent(Graphics g)
    {
@@ -157,35 +167,173 @@ public class IceRunPanel extends JPanel
          myBuffer.setColor(BACKGROUND);
          myBuffer.fillRect(0,0,FRAME,FRAME);
         
-         tmpPwr = (Math.random() * 1000);
+         tmpPwr = (Math.random() * 100000);
         
         
                   
         
          player.draw(myBuffer,player.getImage());
+         
+         //affects SlowIcicle
+        
+         
+         if(tmpPwr < 5)
+         boolSlowPwr = true;
+         
+          
+         if(boolSlowPwr == true)
+         {
+         slow.draw(myBuffer, slowPic);
+         boolSlowDraw = true;
+         }
+         
+        
+         if(player.getImage() == right)
+         {
+         if((player.getX() + 75>= slow.getX() && player.getX() + 75 <= (slow.getX() + slow.getDiameter() * 3)) && boolSlowDraw == true)
+         {  
+            boolSlowPwr = false;
+            slow.setX(9000);
+            slow.setY(9000);
+            slow.randPos(FRAME,FRAME);
+            tmpPwr = 0;
+            boolTimer = true;
+            boolSlowDraw = false;
+          }
+         
+
+         }
+         else if(player.getImage() == left)
+         {
+         if((player.getX() + 60 >= slow.getX() && player.getX() + 60 <= (slow.getX() + slow.getDiameter() * 3)) &&  boolSlowDraw == true)
+         {  
+            boolSlowPwr = false;
+            slow.setX(9000);
+            slow.setY(9000);
+            slow.randPos(FRAME,FRAME);
+            tmpPwr = 0;
+            boolTimer = true;
+            boolSlowDraw = false;
+            
+         }
+         }
+         
+         
+         
 
          //affects SpeedPlayer 
                   
+          if(tmpPwr > 99995)
+         boolSpeedPwr = true;
          
-         if(tmpPwr > 950)
-         boolPwr = true;
-         
-         if(boolPwr == true)
-         speed.draw(myBuffer, fire);
-
-         for(int x = 0; x < speed.getDiameter(); x++){
-         if(speed.getX() + x == player.getX() + x && speed.getY() + x == player.getY() + x)
+          
+         if(boolSpeedPwr == true)
          {
+         speed.draw(myBuffer, speedPic);
+         boolSpeedDraw = true;
+         }
+
+         
+         if(player.getImage() == right)
+         {
+         if((player.getX() + 75>= speed.getX() && player.getX() + 75 <= (speed.getX() + speed.getDiameter() * 3)) && boolSpeedDraw == true)
+         {
+            boolSpeedPwr = false;
             speed.setX(9000);
+            speed.setY(9000);
             speed.randPos(FRAME, FRAME);
+            tmpPwr = 0;
+            boolTimer = true;
+            boolSpeedDraw = false;
+           
+            
+         }
+         
+
+         }
+         else if(player.getImage() == left)
+         {
+         if((player.getX() + 60 >= speed.getX() && player.getX() + 60 <= (speed.getX() + speed.getDiameter() * 3)) && boolSpeedDraw == true)
+         {
+            boolSpeedPwr = false;
+            speed.setX(9000);
+            speed.setY(9000);
+            speed.randPos(FRAME, FRAME);
+            tmpPwr = 0;
+            boolTimer = true;
+            boolSpeedDraw = false;
+    
          }
          }
          
+         //affects Melt
+         if(tmpPwr < 99595 && tmpPwr > 99585)
+         boolMeltPwr = true;
+         
+          
+         if(boolMeltPwr == true)
+         {
+         melt.draw(myBuffer, fire);
+         boolMeltDraw = true;
+         }
+
+        
+         if(player.getImage() == right)
+         {
+         if((player.getX() + 75>= melt.getX() && player.getX() + 75 <= (melt.getX() + melt.getDiameter() * 3)) && boolMeltDraw == true)
+         {
+            boolMeltPwr = false;
+            melt.setX(9000);
+            melt.setY(9000);
+            melt.randPos(FRAME, FRAME);
+            tmpPwr = 0;
+            boolTimer = true;
+            boolMeltDraw = false;
+         }
+         
+
+         }
+         else if(player.getImage() == left)
+         {
+         if((player.getX() + 60 >= melt.getX() && player.getX() + 60 <= (melt.getX() + melt.getDiameter() * 3)) && boolMeltDraw == true)
+         {
+            boolMeltPwr = false;
+            melt.setX(9000);
+            melt.setY(9000);
+            melt.randPos(FRAME, FRAME);
+            tmpPwr = 0;
+            boolTimer = true;
+            boolMeltDraw = false;
+         }
+         }
+         
+           if(boolTimer == true)
+         {  
+            myBuffer.setColor(Color.BLACK);
+            myBuffer.setFont(new Font("Monospaced", Font.BOLD, 16));
+            myBuffer.drawString("Count: " + count,650 , 750);
+            count--;
+         }   
+         if(count == 0)
+         {
+         count = 15;
+         boolTimer = false;
+         } 
+         
+         //PowerUp Moving
+         if(speed.getX() == slow.getX())
+         speed.randPos(FRAME,FRAME);
+         else if(speed.getX() == melt.getX())
+         speed.randPos(FRAME,FRAME);
+
+         
+         
+         //affects Icicle array         
          for(int x = 0; x < bob.length; x++)
          {  
             bob[x].setColor(Color.BLUE);
             bob[x].draw(myBuffer);
-            drop(bob[x], 3);
+            drop(bob[x], dropSpeed);
                        
          
             if (bob[x].getY(0) >= 800 && bob[x].getY(1) >= 800)
@@ -196,7 +344,8 @@ public class IceRunPanel extends JPanel
             
          
          }
-                 
+           
+         
         
          repaint();
   
@@ -213,7 +362,7 @@ public class IceRunPanel extends JPanel
    
    }
    
-   /*private void reset(Icicle icicle)
+      /*private void reset(Icicle icicle)
    {
    int point = (int)(Math.random() * 750);
    int[] newXPoints = new int[]{point, point + 50, point + 25};
