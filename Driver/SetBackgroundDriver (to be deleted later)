@@ -1,4 +1,4 @@
-
+//last edited 6/1/17 during class
 import javax.swing.JFrame;
 public class IceRunSetBackgroundDriver
 {
@@ -6,9 +6,9 @@ public class IceRunSetBackgroundDriver
    {
       JFrame frame = new JFrame("Set Background");
       frame.setSize(400, 300);
-      frame.setLocation(900, 100);
+      frame.setLocation(800, 100);
       frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      frame.setContentPane(new SetBackgroundPanel());
+      frame.setContentPane(new IceRunBackground());
       frame.setVisible(true);
    }
 }
