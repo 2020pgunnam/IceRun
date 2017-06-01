@@ -1,0 +1,21 @@
+   import javax.swing.*;
+   import java.awt.*;
+   import java.awt.event.*;
+   public class IceRunFake extends JPanel
+   {
+      private IceRunBackground back;
+      private BackgroundPic pic;
+      public IceRunFake()
+      {
+         setLayout(new BorderLayout());
+      
+         back = new IceRunBackground();
+         add(back, BorderLayout.SOUTH);
+      
+         pic = new BackgroundPic("Volcano");
+         add(pic, BorderLayout.CENTER);
+      
+         
+      
+      }
+        }
