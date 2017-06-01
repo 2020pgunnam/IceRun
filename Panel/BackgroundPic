@@ -1,0 +1,23 @@
+//last updated 6/1/17
+import javax.swing.*;
+import java.awt.*;
+public class BackgroundPic extends JPanel
+{
+   private  String imagefilename;
+   public BackgroundPic(String s)
+   {
+      imagefilename = s;
+   }
+   
+   
+   public void paintComponent(Graphics g)
+   {
+      ImageIcon icon = new ImageIcon("BackgroundImages/" + imagefilename +".jpg");
+         
+      g.drawImage(icon.getImage(), 0, 0, null);
+      
+         
+   }
+  
+
+}
