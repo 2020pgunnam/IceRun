@@ -12,7 +12,7 @@ public class IceRunPanel extends JPanel implements KeyListener
 
    private BufferedImage myImage;
    private Graphics myBuffer; 
-   private Timer t, timer;
+   private Timer t;
    private Icicle[] bob;
    private SpeedPlayer speed;
    private Melt melt;
@@ -20,9 +20,10 @@ public class IceRunPanel extends JPanel implements KeyListener
    private Multiplier two, four;
    private Player player;
    private ImageIcon fire, right, left, speedPic, twoPic, fourPic, slowPic;
-   private int playerSpeed, dropSpeed, count;
+   private int playerSpeed, dropSpeed, speedCount, meltCount, slowCount ;
    private double tmpPwr;
-   private boolean  boolSpeedPwr, boolSlowPwr, boolMeltPwr, boolTimer, boolSlowDraw, boolSpeedDraw, boolMeltDraw;
+   private boolean  boolSpeedPwr, boolSlowPwr, boolMeltPwr, boolTimer, boolSlowDraw, boolSpeedDraw, boolMeltDraw,
+   boolMeltTimer, boolSpeedTimer, boolSlowTimer;
   
    
    
@@ -31,7 +32,9 @@ public class IceRunPanel extends JPanel implements KeyListener
    public IceRunPanel() 
    {  
       boolTimer = false;
-      count = 15;
+      meltCount = 1500;
+      speedCount = 1500;
+      slowCount = 1500;
       dropSpeed = 3;
       playerSpeed = 9;
       myImage =  new BufferedImage(FRAME, FRAME, BufferedImage.TYPE_INT_RGB);
@@ -197,8 +200,9 @@ public class IceRunPanel extends JPanel implements KeyListener
             slow.setY(9000);
             slow.randPos(FRAME,FRAME);
             tmpPwr = 0;
-            boolTimer = true;
+            boolSlowTimer = true;
             boolSlowDraw = false;
+            dropSpeed = 1;
           }
          
 
@@ -212,8 +216,9 @@ public class IceRunPanel extends JPanel implements KeyListener
             slow.setY(9000);
             slow.randPos(FRAME,FRAME);
             tmpPwr = 0;
-            boolTimer = true;
+            boolSlowTimer = true;
             boolSlowDraw = false;
+            dropSpeed = 1;
             
          }
          }
@@ -243,9 +248,9 @@ public class IceRunPanel extends JPanel implements KeyListener
             speed.setY(9000);
             speed.randPos(FRAME, FRAME);
             tmpPwr = 0;
-            boolTimer = true;
+            boolSpeedTimer = true;
             boolSpeedDraw = false;
-           
+            playerSpeed = 30;
             
          }
          
@@ -260,14 +265,14 @@ public class IceRunPanel extends JPanel implements KeyListener
             speed.setY(9000);
             speed.randPos(FRAME, FRAME);
             tmpPwr = 0;
-            boolTimer = true;
+            boolSpeedTimer = true;
             boolSpeedDraw = false;
-    
+            playerSpeed = 30;
          }
          }
          
          //affects Melt
-         if(tmpPwr < 99595 && tmpPwr > 99585)
+         if(tmpPwr < 99595)
          boolMeltPwr = true;
          
           
@@ -287,7 +292,7 @@ public class IceRunPanel extends JPanel implements KeyListener
             melt.setY(9000);
             melt.randPos(FRAME, FRAME);
             tmpPwr = 0;
-            boolTimer = true;
+            boolMeltTimer = true;
             boolMeltDraw = false;
          }
          
@@ -302,23 +307,63 @@ public class IceRunPanel extends JPanel implements KeyListener
             melt.setY(9000);
             melt.randPos(FRAME, FRAME);
             tmpPwr = 0;
-            boolTimer = true;
+            boolMeltTimer = true;
             boolMeltDraw = false;
          }
          }
+          
          
-           if(boolTimer == true)
-         {  
+         //MeltTimer
+         if(boolMeltTimer == true)
+         {           
+            for(int x = 0; x < bob.length; x++){
+               if(hit(player, bob[x]) == true)
+                  bob[x].reset();
+            }
             myBuffer.setColor(Color.BLACK);
             myBuffer.setFont(new Font("Monospaced", Font.BOLD, 16));
-            myBuffer.drawString("Count: " + count,650 , 750);
-            count--;
+            myBuffer.drawString("Melt: " + meltCount / 100 ,650 , 750);
+           
+            meltCount--;
+            
+
          }   
-         if(count == 0)
+         if(meltCount == 0)
          {
-         count = 15;
-         boolTimer = false;
+         meltCount = 1500;
+         boolMeltTimer = false;
          } 
+         
+         //Speed Timer
+          if(boolSpeedTimer == true)
+         {  
+            myBuffer.setColor(Color.BLACK);
+            myBuffer.setFont(new Font("Monospaced", Font.BOLD, 16)); 
+            myBuffer.drawString("Speed: " + speedCount/100,650 , 730);
+            speedCount--;
+                    }   
+         if(speedCount == 0)
+         {
+         speedCount = 1500;
+         boolSpeedTimer = false;
+         playerSpeed = 9;
+         } 
+         
+        //SlowTimer
+         if(boolSlowTimer == true)
+         {  
+            myBuffer.setColor(Color.BLACK);
+            myBuffer.setFont(new Font("Monospaced", Font.BOLD, 16)); 
+            myBuffer.drawString("Slow: " + slowCount / 100 ,650 , 710);
+            slowCount--;
+         }   
+         if(slowCount == 0)
+         {
+         slowCount = 1500;
+         boolSlowTimer = false;
+         dropSpeed = 3;
+         } 
+
          
          //PowerUp Moving
          if(speed.getX() == slow.getX())
@@ -326,6 +371,7 @@ public class IceRunPanel extends JPanel implements KeyListener
          else if(speed.getX() == melt.getX())
          speed.randPos(FRAME,FRAME);
 
+         //Icicle Collision
          
          
          //affects Icicle array         
@@ -359,6 +405,17 @@ public class IceRunPanel extends JPanel implements KeyListener
          array[x] = array[x] + speed;
       icicle.setY(array);
       
+   
+   }
+   
+   private boolean hit(Player p, Icicle icicle)
+   {
+   if((icicle.getX(2) >= (p.getX()) && (icicle.getX(2) <= (p.getX() + 80))) && ((icicle.getY(2)) >= (p.getY())) && icicle.getY(2) <= (p.getY() + 15) )
+      return true;
+   else
+      return false;
+      
+   
    
    }
    
