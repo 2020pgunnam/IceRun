@@ -5,10 +5,13 @@ import java.awt.event.*;
 public class IceRunBackground extends JPanel
 {
    private JLabel top;
-   private String selectedOption;
+   private String selectedOption, fullName;
    public String finalOption;
    private JLabel currentlySelectedText; 
-   public BackgroundPic currentlySelectedImage;
+ 	private JLabel image;
+	private ImageIcon icon, myImage;
+   private String uniqueName = " ";
+	
    
    
    public IceRunBackground()
@@ -20,12 +23,17 @@ public class IceRunBackground extends JPanel
       top = new JLabel("Pick a Background:");
       
       top.setForeground(Color.BLUE);
-      
-      header.add(top);
-   
+         
+	   header.add(top, BorderLayout.NORTH);
+		
+  		
+		image = new JLabel(new ImageIcon("BackgroundImages/Blank200x200.jpg"));
+		image.setOpaque(false);
+		
+		header.add(image, BorderLayout.SOUTH);
+		add(header, BorderLayout.NORTH);
 
-      add(header, BorderLayout.NORTH);
-     
+	  
       JPanel buttons = new JPanel();
       buttons.setLayout(new GridLayout(3,3,5,5));
       add(buttons, BorderLayout.CENTER);
@@ -44,10 +52,7 @@ public class IceRunBackground extends JPanel
       currentlySelectedText = new JLabel("Currently Selected: " ,SwingConstants.CENTER);
       c.add(currentlySelectedText);
       
-      currentlySelectedImage = new BackgroundPic("Beach");
-      //currentlySelectedImage.drawImage();
-      c.add( currentlySelectedImage);
-      
+     
       JButton confirm = new JButton("Confirm Selection");
       confirm.setForeground(Color.GREEN);
       confirm.addActionListener(new ConfirmListener());
@@ -67,13 +72,18 @@ public class IceRunBackground extends JPanel
       public Listener(String name, String picture)
       {
          imgName = name;
-         imgFileName = picture + "_resized.jpg";
+         imgFileName = picture;
+         uniqueName = picture;
+			
+;
       }
       public void actionPerformed(ActionEvent e)
       {
          selectedOption = imgName;
+			image.setIcon(new ImageIcon("BackgroundImages/" + imgFileName + "_resizedSelection.jpg"));
+			//fullName = "BackgroundImages/" + imgFileName + ".png";
          currentlySelectedText.setText("Currently Selected: " +  imgName);
-         currentlySelectedImage.setNewImage(imgFileName);
+        
          //System.out.println("Selected: " + selectedOption);//test code
       }
    }
@@ -84,8 +94,19 @@ public class IceRunBackground extends JPanel
       {
       finalOption = selectedOption;
       //System.out.println("Final: " + finalOption);
-      System.exit(0);//test
+   
       }
+   }
+	public String getImage()
+	{
+	
+	return fullName;	
+	
+	}
+   public String getImageUniversalName()
+   {
+   return uniqueName;//returns part of image name that is unique (ex. Beach or Volcano)
+   
    }
   
 }
